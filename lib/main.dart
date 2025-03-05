@@ -140,6 +140,33 @@ class _MyHomePageState extends State<MyHomePage> {
                         (snapshot.data?.docs ?? [])[index]['enName'],
                         style: TextStyle(fontSize: 48),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection('country')
+                                  .doc(snapshot.data?.docs[index].id)
+                                  .update({
+                                    'name': 'ไทย',
+                                    'enName': 'Thailand',
+                                    'image': 'https://flagcdn.com/w320/th.png',
+                                  });
+                            },
+                            icon: Icon(Icons.edit),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection('country')
+                                  .doc(snapshot.data?.docs[index].id)
+                                  .delete();
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 );
