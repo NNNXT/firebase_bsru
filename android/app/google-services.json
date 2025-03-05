@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "652570193757",
+    "project_id": "fir-bsru",
+    "storage_bucket": "fir-bsru.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652570193757:android:31248a646792c06b0042b4",
+        "android_client_info": {
+          "package_name": "com.example.bsru_firestoree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjR6yj0YST2K5BdQxatHG2bIKUe73ob-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
