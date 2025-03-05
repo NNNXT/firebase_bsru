@@ -120,11 +120,38 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('country').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.separated(
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Column(
+                    children: [
+                      Image.network(
+                        (snapshot.data?.docs ?? [])[index]['image'],
+                      ),
+                      Text(
+                        (snapshot.data?.docs ?? [])[index]['name'],
+                        style: TextStyle(fontSize: 48),
+                      ),
+                      Text(
+                        (snapshot.data?.docs ?? [])[index]['enName'],
+                        style: TextStyle(fontSize: 48),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 8);
+              },
+              itemCount: (snapshot.data?.docs ?? []).length,
+            );
+          }
+          return Center(child: CircularProgressIndicator());
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addMultiCountry,
